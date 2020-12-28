@@ -35,8 +35,6 @@ namespace LeetCode
                 arrow += number;
             }
 
-            Console.WriteLine(string.Join(",", array));
-
             return string.Join("",array);
         }
     }

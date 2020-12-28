@@ -5,13 +5,6 @@ using System.Text;
 
 namespace LeetCode
 {
-    /*Given a string s, return the longest palindromic substring in s.
-    
-    Constraints:
-
-    1 <= s.length <= 1000
-    s consist of only digits and English letters (lower-case and/or upper-case),*/
-
     class Task5
     {
         public string LongestPalindrome(string s)
@@ -20,7 +13,6 @@ namespace LeetCode
 
             int[] biggestP = new int[] { 0, 0 }; 
 
-            //checks first two lines from the center 
             for (int i=0;i<s.Length;i++)
             {
                 array[i,i] = 1;
@@ -31,8 +23,6 @@ namespace LeetCode
                     biggestP[1] = i+1;
                 }
             }
-
-            //checks other lines from the center
 
             for (int i=2;i<s.Length;i++)
             {
@@ -51,7 +41,6 @@ namespace LeetCode
             {
                 return "";
             }
-
 
             return s.Substring(biggestP[0],biggestP[1]-biggestP[0]+1);
         }

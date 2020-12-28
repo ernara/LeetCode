@@ -19,10 +19,5 @@ namespace LeetCode
             }
             return true;
         }
-        //public bool IsPalindrome2(int x)
-        //{
-
-
-        //}
     }
 }
