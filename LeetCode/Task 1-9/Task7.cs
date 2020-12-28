@@ -9,19 +9,20 @@ namespace LeetCode
     {
         public int Reverse(int x)
         {
-            string s = Reverse(x.ToString());
+            long sum = 0;
 
-            Console.WriteLine(s);
-            return 0;
-        }
+            while (x != 0)
+            {
+                if (Math.Abs(sum * 10) > Int32.MaxValue)
+                {
+                    return 0;
+                }
+                sum *= 10;
+                sum += x % 10;
+                x /= 10;
+            }
 
-        public string Reverse(string text)
-        {
-            if (text == null) return null;
-
-            char[] array = text.ToCharArray();
-            Array.Reverse(array);
-            return new String(array);
+            return (int)sum;
         }
     }
 }
