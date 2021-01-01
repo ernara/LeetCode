@@ -6,8 +6,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Task12 task12 = new Task12();
-            Console.WriteLine(task12.IntToRoman(666));
+            Task13 task13 = new Task13();
+            Console.WriteLine(task13.RomanToInt("MCMXCIV"));
         }
     }
 }
