@@ -8,7 +8,7 @@ namespace LeetCode
     {
         public bool IsValid(string s)
         {
-            if (s.Length%2!=0 || s.Length<=1)
+            if (s.Length % 2 != 0)
             {
                 return false;
             }
@@ -19,12 +19,12 @@ namespace LeetCode
             dicionary.Add(']', '[');
             dicionary.Add(')', '(');
             dicionary.Add('}', '{');
-           
-            for (int i=0;i<s.Length;i++)
+
+            for (int i = 0; i < s.Length; i++)
             {
-                if (stack.Count!=0 && stack.Peek() == dicionary[s[i]])
+                if (stack.Count != 0 && dicionary.ContainsKey(s[i]) && stack.Peek() == dicionary[s[i]])
                 {
-                   // stack.Pop(); dicionary.ContainsKey(s[i + 1])
+                    stack.Pop();
                 }
                 else
                 {
