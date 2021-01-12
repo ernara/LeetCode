@@ -6,9 +6,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            Task18 task18 = new Task18();
-            task18.FourSum(new int[] { 1, -2, -5, -4, -3, 3, 3, 5 }, -11);
-
+            Task28 task28 = new Task28();
+            Console.WriteLine(task28.StrStr("a", "a"));
         }
     }
 }

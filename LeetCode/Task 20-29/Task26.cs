@@ -9,8 +9,9 @@ namespace LeetCode
     {
         public int RemoveDuplicates(int[] nums)
         {
-            var h = new HashSet<int>(nums);
-            return h.Count;
+            //var h = new HashSet<int>(nums);
+            //return h;
+            return 0;
         }
     }
 }
