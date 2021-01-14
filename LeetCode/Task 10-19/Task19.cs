@@ -8,20 +8,19 @@ namespace LeetCode
     {
         public ListNode RemoveNthFromEnd(ListNode head, int n)
         {
-            ListNode newNode = new ListNode(head.val);
-            ListNode oldNode = head.next;
+            List<int> list = new List<int>();
 
             int i = 0;
 
-            for (ListNode currentNew = newNode; oldNode != null; oldNode = oldNode.next, currentNew = currentNew.next,i++)
+            while (head!=null)
             {
-                if (i != n)
-                {
-                    Console.WriteLine(oldNode.val + " " + i);
-                    
-                }
-                currentNew.next = new ListNode(oldNode.val);
+                list.Add(head.val);
+                head = head.next;
             }
+
+            list.RemoveAt(n);
+            list.Reverse();
+
             return newNode;
         }
     }
