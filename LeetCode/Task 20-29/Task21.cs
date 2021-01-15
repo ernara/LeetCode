@@ -8,7 +8,27 @@ namespace LeetCode.Task_20_29
     {
         public ListNode MergeTwoLists(ListNode l1, ListNode l2)
         {
-            ListNode result = new ListNode();
+            if (l1==null)
+                return l2;
+            if (l2 == null)
+                return l1;
+
+            int val = 0;
+
+            if (l1.val < l2.val)
+            {
+                val = l1.val;
+                l1 = l1.next;
+            }
+            else
+            {
+                val = l2.val;
+                l2 = l2.next;
+            }
+
+            ListNode result = new ListNode(val);
+
+
             while (l1!=null && l2!=null)
             {
                 if (l1.val<l2.val)
@@ -16,7 +36,7 @@ namespace LeetCode.Task_20_29
                     result = new ListNode(l1.val, result);
                     l1 = l1.next;
                 }
-                else
+                else 
                 {
                     result = new ListNode(l2.val, result);
                     l2 = l2.next;
@@ -35,7 +55,7 @@ namespace LeetCode.Task_20_29
                 l2 = l2.next;
             }
 
-            ListNode result2 = new ListNode(result.val, result);
+            ListNode result2 = new ListNode(result.val);
             result = result.next;
 
             while (result!=null)
