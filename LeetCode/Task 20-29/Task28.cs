@@ -8,34 +8,16 @@ namespace LeetCode
     {
         public int StrStr(string haystack, string needle)
         {
-
-            if (needle.Length<1)
+            if (haystack.Contains(needle))
             {
-                return 0;
-            }
-
-            if (needle.Length==1)
-            {
-                if (haystack.Contains(needle))
+                for (int i = 0; i < haystack.Length; i++)
                 {
-                    if (haystack.Length==1)
+                    if (haystack[i..(needle.Length + i)] == needle)
                     {
-                        return 0;
+                        return i;
                     }
-                    return 2;
-                }
-                return -1;
-            }
-
-            for (int i=0;i<haystack.Length-needle.Length;i++)
-            {
-                Console.WriteLine($"{haystack.Substring(i, needle.Length)}");
-                if (haystack[i]==needle[0] && haystack.Substring(i,needle.Length)==needle)
-                {
-                    return 2;
                 }
             }
-
             return -1;
         }
     }
