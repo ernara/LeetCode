@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace LeetCode
 {
@@ -8,46 +10,67 @@ namespace LeetCode
     {
         public bool IsMatch(string s, string p)
         {
-            int y = 0;
+            if (p.Length==2 && p[1]=='*' && p[0] == '.') { return true; }
 
-            char same;
-
-            for (int i=0;i<p.Length && y<s.Length;i++)
+            Console.WriteLine($"-------{s} {p}-------");
+            int i = 0, y = 0;
+            for (; i<s.Length && y<p.Length;)
             {
-                if (p[i]=='.')
+                
+                if (y + 2 < p.Length && p[y] == '.' && p[y + 1] == '*')
                 {
-                    same = s[y];
-                }
-                else
-                {
-                    same = p[i];
-                }
-
-                if (i + 1 < p.Length && p[i + 1] == '*')
-                {
-                    while (y < p.Length && s[y] == same)
+                    if (p[y + 2] != s[i])
                     {
-                        y++;
-                    }
-                }
-                else
-                {
-                    if (s[y] == same)
-                    {
-                        y++;
+                        i++;
                     }
                     else
                     {
-                        return false;
+                        i += 1;
+                        y += 3;
                     }
+                }
+                else if (s[i] == p[y] || p[y]=='.')
+                {
+                    i++;
+                    y++;
+                }
+                else if (y > 0 && p[y] == '*' &&  p[y - 1] == s[i])
+                {
+                    if (y+2<p.Length)
+                    {
+                        if (IsMatch(s.Substring(i), p.Substring(y + 1)))
+                        {
+                            return true;
+                        }
+                    }
+                    i++;
+                }
+                else if (y+1<p.Length && p[y+1] == '*')
+                {
+                    y += 2;
+                }
+                else if (y > 0 && p[y] == '*' && p[y - 1] != s[i])
+                {
+                    y++;
+                }
+                else
+                {
+                    Console.WriteLine($"anksciau {i} {y}");
+                    return false; 
                 }
             }
 
-            if (y==s.Length)
+            if (y < p.Length && p[y] == '*') { y++; }
+
+            Console.WriteLine($"{i} {y}");
+            if (i==s.Length && y ==p.Length)
             {
                 return true;
             }
             return false;
+
         }
+
+       
     }
 }
