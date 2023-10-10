@@ -10,65 +10,62 @@ namespace LeetCode
     {
         public bool IsMatch(string s, string p)
         {
-            if (p.Length==2 && p[1]=='*' && p[0] == '.') { return true; }
-
-            Console.WriteLine($"-------{s} {p}-------");
-            int i = 0, y = 0;
-            for (; i<s.Length && y<p.Length;)
+            if (s.Length == 0 && p.Length == 0)
             {
-                
-                if (y + 2 < p.Length && p[y] == '.' && p[y + 1] == '*')
+                return true;
+            }
+            else if (s.Length!=0 && p.Length==0)
+            {
+                return false;
+            }
+            else if (1<p.Length && p[1]=='*')
+            {
+                if (IsMatch(s,p.Substring(2)))
                 {
-                    if (p[y + 2] != s[i])
-                    {
-                        i++;
-                    }
-                    else
-                    {
-                        i += 1;
-                        y += 3;
-                    }
+                    return true;
                 }
-                else if (s[i] == p[y] || p[y]=='.')
+                else 
                 {
-                    i++;
-                    y++;
-                }
-                else if (y > 0 && p[y] == '*' &&  p[y - 1] == s[i])
-                {
-                    if (y+2<p.Length)
+                    string copy = s;
+                    string substring = p.Substring(2);
+                    while (copy.Length > 0 && (p[0] == copy[0] || p[0] == '.'))
                     {
-                        if (IsMatch(s.Substring(i), p.Substring(y + 1)))
+                        copy = copy.Substring(1);
+                        if (IsMatch(copy, substring))
                         {
                             return true;
                         }
                     }
-                    i++;
                 }
-                else if (y+1<p.Length && p[y+1] == '*')
+            }
+            else if (s.Length==0 && p.Length!=0)
+            {
+                return false; //istrinti?
+            }
+            else if (p[0]=='.')
+            {
+                if (IsMatch(s.Substring(1), p.Substring(1)))
                 {
-                    y += 2;
-                }
-                else if (y > 0 && p[y] == '*' && p[y - 1] != s[i])
-                {
-                    y++;
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine($"anksciau {i} {y}");
-                    return false; 
+                    return false;
                 }
             }
-
-            if (y < p.Length && p[y] == '*') { y++; }
-
-            Console.WriteLine($"{i} {y}");
-            if (i==s.Length && y ==p.Length)
+            else if (s[0] == p[0])
             {
-                return true;
+                if (IsMatch(s.Substring(1), p.Substring(1)))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+            
             return false;
-
         }
 
        
