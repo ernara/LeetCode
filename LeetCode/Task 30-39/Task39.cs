@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,40 +9,37 @@ namespace LeetCode
     {
         public IList<IList<int>> CombinationSum(int[] candidates, int target)
         {
-            IList<IList<int>> result = new List<IList<int>>();
-
-            for (int i = 0; i < candidates.Length; i++)
-            {
-
-            }
-
+            IList <IList<int>> result = new List<IList<int>>();
+            CombinationSum(candidates,target, new List<int>(),  0, result, new HashSet<string>());
             return result;
         }
 
-        public IList<int> CombinationSum(int[] candidates, int target, IList<int> result)
+        public void CombinationSum(int[] candidates, int target, List<int> current , int sum, IList<IList<int>> result, HashSet<string> h)
         {
-            IList<int> myList = new List<int>();
-
-            for (int i = 0; i < candidates.Length; i++)
+            if (sum>target)
             {
-
+                return;
             }
-
-            return result;
-        }
-
-        static int CalculateSum(List<int> numbers)
-        {
-            int sum = 0;
-
-            foreach (int number in numbers)
+            else if(sum==target)
             {
-                sum += number;
+                current.Sort();
+                string s = string.Join(",", current);
+                if (!h.Contains(s))
+                {
+                    h.Add(s);
+                    result.Add(current);
+                }
+                return;
             }
-
-            return sum;
+            else
+            {
+                for (int i = 0; i < candidates.Length; i++)
+                {
+                    current.Add(candidates[i]);
+                    CombinationSum(candidates, target, new List<int>(current), sum + candidates[i], result, h);
+                    current.RemoveAt(current.Count-1);
+                }
+            }
         }
-
-
     }
 }
