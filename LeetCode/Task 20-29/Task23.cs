@@ -23,11 +23,10 @@ namespace LeetCode.Task_20_29
             if (values.Count == 0) { return new ListNode().next; }
 
             values.Sort();
-            values.Reverse();
 
-            ListNode result = new(values[0]);
+            ListNode result = new ListNode(values[values.Count - 1]);
 
-            for (int i = 1; i < values.Count; i++)
+            for (int i = values.Count - 2; i >= 0; i--)
             {
                 result = new ListNode(values[i], result);
             }
