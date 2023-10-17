@@ -13,10 +13,10 @@ namespace LeetCode.Task_20_29
             ListNode first = head;
             ListNode second = head;
 
-            while (first!=null && first.next!=null)
+            while (first != null && first.next != null)
             {
                 second = first.next;
-                (first.val,second.val) = (second.val,first.val);
+                (first.val, second.val) = (second.val, first.val);
                 first = second.next;
             }
 
