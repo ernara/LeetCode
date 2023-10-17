@@ -39,7 +39,6 @@ namespace LeetCode
                     i = bbi - 1;
                 }
             }
-
             return water;
         }
 
