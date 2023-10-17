@@ -40,7 +40,7 @@ namespace LeetCode
             }
             else if (s.Length==0 && p.Length!=0)
             {
-                return false; //istrinti?
+                return false;
             }
             else if (p[0]=='.')
             {
