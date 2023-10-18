@@ -33,14 +33,28 @@ namespace LeetCode
             //int index = list.BinarySearch(5);
             //Console.WriteLine(index);
 
-            Task44 task44 = new Task44();
-            Console.WriteLine($"{task44.IsMatch("ss", "pp")} {false}");
-            Console.WriteLine($"{task44.IsMatch("ss", "??")} {true}");
-            Console.WriteLine($"{task44.IsMatch("ss", "**")} {true}");
-            Console.WriteLine($"{task44.IsMatch("ss", "*")} {true}");
-            Console.WriteLine($"{task44.IsMatch("ss", "?")} {false}");
-            Console.WriteLine($"{task44.IsMatch("ss", "***")} {true}");
-            Console.WriteLine($"{task44.IsMatch("ss", "???")} {false}");
+            //Task44 task44 = new Task44();
+            //Console.WriteLine($"{task44.IsMatch("ss", "pp")} {false}");
+            //Console.WriteLine($"{task44.IsMatch("ss", "??")} {true}");
+            //Console.WriteLine($"{task44.IsMatch("ss", "**")} {true}");
+            //Console.WriteLine($"{task44.IsMatch("ss", "*")} {true}");
+            //Console.WriteLine($"{task44.IsMatch("ss", "?")} {false}");
+            //Console.WriteLine($"{task44.IsMatch("ss", "***")} {true}");
+            //Console.WriteLine($"{task44.IsMatch("ss", "???")} {false}");
+
+            Task30 task30 = new Task30();
+
+            string[] s = new string[] { "foo", "bar" };
+            List <int > list = new List<int>();
+            string result = string.Join(",", task30.FindSubstring("barfoothefoobarman", s));
+
+            Console.WriteLine($"{result} {"[0,9]"}");
+            //Console.WriteLine($"{task30.FindSubstring("ss", "??")} {true}");
+            //Console.WriteLine($"{task30.FindSubstring("ss", "**")} {true}");
+            //Console.WriteLine($"{task30.FindSubstring("ss", "*")} {true}");
+            //Console.WriteLine($"{task30.FindSubstring("ss", "?")} {false}");
+            //Console.WriteLine($"{task30.FindSubstring("ss", "***")} {true}");
+            //Console.WriteLine($"{task30.FindSubstring("ss", "???")} {false}");
 
 
         }

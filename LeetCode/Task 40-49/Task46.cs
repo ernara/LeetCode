@@ -9,12 +9,12 @@ namespace LeetCode.Task_40_49
     {
         public IList<IList<int>> Permute(int[] nums)
         {
-
+            return new List<IList<int>>();
         }
 
         public void Permute2 ()
         {
-            for(int i=0;i<)
+            
         }
 
     }
